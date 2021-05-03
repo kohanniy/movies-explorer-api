@@ -1,0 +1,27 @@
+{
+  "name": "movies-explorer",
+  "version": "1.0.0",
+  "description": "Thesis project",
+  "main": "app.js",
+  "scripts": {
+    "lint": "npx eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kohanniy/movies-explorer-api.git"
+  },
+  "author": "Vyacheslav Kohanniy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kohanniy/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/kohanniy/movies-explorer-api#readme",
+  "devDependencies": {
+    "eslint": "^7.25.0"
+  },
+  "dependencies": {
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
