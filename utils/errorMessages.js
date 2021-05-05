@@ -7,6 +7,11 @@ const validationErrorMsg = {
   invalidURL: 'Недопустимый URL',
 };
 
+const unauthorizedMsg = {
+  login: 'Неправильные e-mail или пароль',
+  noToken: 'Необходима авторизация',
+};
+
 const requestErrors = {
   notFound: {
     errName: 'DocumentNotFoundError',
@@ -35,5 +40,6 @@ const requestErrors = {
 
 module.exports = {
   validationErrorMsg,
+  unauthorizedMsg,
   requestErrors,
 };
