@@ -7,6 +7,33 @@ const validationErrorMsg = {
   invalidURL: 'Недопустимый URL',
 };
 
+const requestErrors = {
+  notFound: {
+    errName: 'DocumentNotFoundError',
+    user: 'Пользователь не найден',
+    movie: 'Фильм не найден',
+    url: 'Запрашиваемый ресурс не найден',
+  },
+  notFoundId: {
+    errName: 'CastError',
+    user: 'Нет пользователя с таким id',
+    movie: 'Нет фильма с таким id',
+  },
+  validation: {
+    errName: 'ValidationError',
+    message: 'Переданы неверные данные',
+  },
+  conflict: {
+    errName: 'MongoError',
+    mongoErrorCode: 11000,
+    message: 'Пользователь с данным e-mail уже зарегистрирован',
+  },
+  forbidden: {
+    message: 'Вы не можете удалять карточки других пользователей',
+  },
+};
+
 module.exports = {
   validationErrorMsg,
+  requestErrors,
 };
