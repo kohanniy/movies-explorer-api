@@ -14,6 +14,7 @@ module.exports = {
     'no-underscore-dangle': ['error', { allow: ['_id'] }],
     'object-curly-newline': 'off',
     'func-names': 'off',
+    'no-unused-vars': ['error', { args: 'none' }],
     'consistent-return': 'off',
     'eslint-disable': 'off',
     'eslint-disable-line': 'off',
