@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const cors = require('cors');
+const { errors } = require('celebrate');
 
 const routes = require('./routes/index');
 const NotFoundError = require('./errors/NotFound');
@@ -22,7 +23,7 @@ mongoose.connect(`${MONGO_URI}`, {
 });
 
 app.use(helmet());
-// app.use(limiter);
+app.use(limiter);
 app.use(cors());
 
 app.use(bodyParser.json());
@@ -34,12 +35,12 @@ app.all('/*', () => {
   throw new NotFoundError(requestErrors.notFound.url);
 });
 
+app.use(errors());
+
 app.use((err, req, res, next) => {
   const { statusCode = 500, message } = err;
 
   res.status(statusCode).send({ message: statusCode === 500 ? 'Ошибка сервера' : message });
-
-  next();
 });
 
 app.listen(PORT, () => {
