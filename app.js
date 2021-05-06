@@ -10,6 +10,7 @@ const routes = require('./routes/index');
 const NotFoundError = require('./errors/NotFound');
 const { requestErrors } = require('./utils/errorMessages');
 const limiter = require('./helpers/rateLimit');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { MONGO_URI, PORT = 3000 } = process.env;
 
@@ -29,11 +30,15 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(requestLogger);
+
 app.use(routes);
 
 app.all('/*', () => {
   throw new NotFoundError(requestErrors.notFound.url);
 });
+
+app.use(errorLogger);
 
 app.use(errors());
 
