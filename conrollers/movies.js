@@ -59,8 +59,9 @@ const deleteMovie = (req, res, next) => {
         throw new ForbiddenError(requestErrors.forbidden.message);
       }
 
-      movie.remove();
-      return res.status(200).send({ message: movieDelConfirmMsg });
+      return movie.remove()
+        .then(() => res.send({ message: movieDelConfirmMsg }))
+        .catch(next);
     })
     .catch((err) => {
       if (err.name === requestErrors.notFoundId.errName) {
