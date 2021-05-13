@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const { emailValidator } = require('../utils/validators');
+const { emailValidator } = require('../helpers/validators');
 const { validationErrorMsg, unauthorizedMsg } = require('../utils/errorMessages');
 const AuthError = require('../errors/Auth');
 
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-userSchema.statics.findUserByCredentials = function (email, password) {
+userSchema.statics.findUserByCredentials = function findUser(email, password) {
   return this.findOne({ email }).select('+password')
     .then((user) => {
       if (!user) {
