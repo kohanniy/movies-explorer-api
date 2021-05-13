@@ -9,6 +9,8 @@ const validationErrorMsg = {
 
 const serverMsg = 'Ошибка сервера';
 
+const movieDelConfirmMsg = 'Фильм удален';
+
 const unauthorizedMsg = {
   login: 'Неправильные e-mail или пароль',
   noToken: 'Необходима авторизация',
@@ -43,6 +45,7 @@ const requestErrors = {
 module.exports = {
   validationErrorMsg,
   serverMsg,
+  movieDelConfirmMsg,
   unauthorizedMsg,
   requestErrors,
 };

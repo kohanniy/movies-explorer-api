@@ -4,6 +4,6 @@ const { checNewMovie, checkMovieId } = require('../middlewares/checkData');
 
 router.get('/', getMovies);
 router.post('/', checNewMovie, createMovie);
-router.delete('/movieId', checkMovieId, deleteMovie);
+router.delete('/:movieId', checkMovieId, deleteMovie);
 
 module.exports = router;
