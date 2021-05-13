@@ -11,17 +11,11 @@ const NotFoundError = require('./errors/NotFound');
 const { requestErrors } = require('./utils/errorMessages');
 const limiter = require('./helpers/rateLimit');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-
-const { MONGO_URI, PORT = 3000 } = process.env;
+const config = require('./utils/config');
 
 const app = express();
 
-mongoose.connect(`${MONGO_URI}`, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-  useUnifiedTopology: true,
-});
+mongoose.connect(config.MONGO_URL, config.mongooseParams);
 
 app.use(helmet());
 app.use(limiter);
@@ -48,7 +42,4 @@ app.use((err, req, res, next) => {
   res.status(statusCode).send({ message: statusCode === 500 ? 'Ошибка сервера' : message });
 });
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Приложение слушает порт ${PORT}`);
-});
+app.listen(config.PORT);
