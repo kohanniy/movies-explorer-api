@@ -7,6 +7,8 @@ const validationErrorMsg = {
   invalidURL: 'Недопустимый URL',
 };
 
+const serverMsg = 'Ошибка сервера';
+
 const unauthorizedMsg = {
   login: 'Неправильные e-mail или пароль',
   noToken: 'Необходима авторизация',
@@ -40,6 +42,7 @@ const requestErrors = {
 
 module.exports = {
   validationErrorMsg,
+  serverMsg,
   unauthorizedMsg,
   requestErrors,
 };

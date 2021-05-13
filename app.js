@@ -12,6 +12,7 @@ const { requestErrors } = require('./utils/errorMessages');
 const limiter = require('./helpers/rateLimit');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const config = require('./utils/config');
+const centralizedErrorHandler = require('./middlewares/centralizedErrorHandler');
 
 const app = express();
 
@@ -36,10 +37,6 @@ app.use(errorLogger);
 
 app.use(errors());
 
-app.use((err, req, res, next) => {
-  const { statusCode = 500, message } = err;
-
-  res.status(statusCode).send({ message: statusCode === 500 ? 'Ошибка сервера' : message });
-});
+app.use(centralizedErrorHandler);
 
 app.listen(config.PORT);
