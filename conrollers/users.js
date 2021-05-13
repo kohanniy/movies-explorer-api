@@ -8,8 +8,9 @@ const ConflictError = require('../errors/ConflictError');
 const { requestErrors } = require('../utils/errorMessages');
 const { JWT_SECRET } = require('../utils/config');
 
+const { errName, mongoErrorCode, message } = requestErrors.conflict;
+
 const createUser = (req, res, next) => {
-  const { errName, mongoErrorCode, message } = requestErrors.conflict;
   bcrypt.hash(req.body.password, 10)
     .then((hash) => User.create({
       email: req.body.email,
@@ -85,6 +86,10 @@ const updateUser = (req, res, next) => {
       }
       if (err.name === requestErrors.notFoundId.errName) {
         const error = new NotFoundError(requestErrors.notFoundId.user);
+        next(error);
+      }
+      if (err.name === errName || err.code === mongoErrorCode) {
+        const error = new ConflictError(message);
         next(error);
       }
       next(err);

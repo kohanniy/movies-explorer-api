@@ -17,14 +17,13 @@ const app = express();
 mongoose.connect(config.MONGO_URL, config.mongooseParams);
 
 app.use(helmet());
-// app.use(limiter);
 app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
-
+// app.use(limiter);
 app.use(routes);
 
 app.use(errorLogger);
