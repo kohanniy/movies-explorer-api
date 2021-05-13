@@ -1,5 +1,5 @@
 const isEmail = require('validator/lib/isEmail');
-const { regexToCheckURL } = require('./constants');
+const { regexToCheckURL } = require('../utils/constants');
 
 const emailValidator = (email) => isEmail(email);
 

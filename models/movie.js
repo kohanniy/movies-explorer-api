@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { validationErrorMsg } = require('../utils/errorMessages');
-const { urlValidator } = require('../utils/validators');
+const { urlValidator } = require('../helpers/validators');
 
 const movieSchema = new mongoose.Schema({
   country: {
