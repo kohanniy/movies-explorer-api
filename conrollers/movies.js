@@ -1,5 +1,5 @@
 const Movie = require('../models/movie');
-const { requestErrors } = require('../utils/errorMessages');
+const { requestErrors, movieDelConfirmMsg } = require('../utils/errorMessages');
 const BadRequestError = require('../errors/BadRequest');
 const NotFoundError = require('../errors/NotFound');
 const ForbiddenError = require('../errors/Forbidden');
@@ -50,7 +50,7 @@ const createMovie = (req, res, next) => {
 };
 
 const deleteMovie = (req, res, next) => {
-  Movie.findById(req.params.id)
+  Movie.findById(req.params.movieId)
     .then((movie) => {
       if (!movie) {
         throw new NotFoundError(requestErrors.notFound.movie);
@@ -60,7 +60,7 @@ const deleteMovie = (req, res, next) => {
       }
 
       movie.remove();
-      return res.status(200).send({ message: 'Фильм удален' });
+      return res.status(200).send({ message: movieDelConfirmMsg });
     })
     .catch((err) => {
       if (err.name === requestErrors.notFoundId.errName) {

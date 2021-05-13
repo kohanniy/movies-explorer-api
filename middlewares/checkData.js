@@ -34,13 +34,13 @@ const checNewMovie = celebrate({
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
     thumbnail: Joi.string().required().uri(),
-    movieId: Joi.string().alphanum(),
+    movieId: Joi.number().required(),
   }),
 });
 
 const checkMovieId = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().alphanum(),
+    movieId: Joi.string().required(),
   }),
 });
 
