@@ -77,7 +77,7 @@ const updateUser = (req, res, next) => {
       if (!user) {
         throw new NotFoundError(requestErrors.notFound.user);
       }
-      return res.status(200).send(user);
+      return res.send(user);
     })
     .catch((err) => {
       if (err.name === requestErrors.validation.errName) {

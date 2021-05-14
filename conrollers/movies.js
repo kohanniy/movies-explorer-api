@@ -6,7 +6,7 @@ const ForbiddenError = require('../errors/Forbidden');
 
 const getMovies = (req, res, next) => {
   Movie.find({})
-    .then((movies) => res.status(200).send(movies))
+    .then((movies) => res.send(movies))
     .catch(next);
 };
 
@@ -39,7 +39,7 @@ const createMovie = (req, res, next) => {
     movieId,
     owner: req.user._id,
   })
-    .then((movie) => res.status(200).send(movie))
+    .then((movie) => res.send(movie))
     .catch((err) => {
       if (err.name === requestErrors.validation.errName) {
         const error = new BadRequestError(requestErrors.validation.message);
@@ -60,8 +60,7 @@ const deleteMovie = (req, res, next) => {
       }
 
       return movie.remove()
-        .then(() => res.send({ message: movieDelConfirmMsg }))
-        .catch(next);
+        .then(() => res.send({ message: movieDelConfirmMsg }));
     })
     .catch((err) => {
       if (err.name === requestErrors.notFoundId.errName) {

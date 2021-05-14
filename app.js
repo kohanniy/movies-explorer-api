@@ -23,13 +23,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(requestLogger);
-// app.use(limiter);
+app.use(limiter);
 app.use(routes);
-
 app.use(errorLogger);
-
 app.use(errors());
-
 app.use(centralizedErrorHandler);
 
 app.listen(config.PORT);
