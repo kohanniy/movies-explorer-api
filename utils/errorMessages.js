@@ -35,7 +35,7 @@ const requestErrors = {
   conflict: {
     errName: 'MongoError',
     mongoErrorCode: 11000,
-    message: 'Пользователь с данным e-mail уже зарегистрирован',
+    message: 'Пользователь с данным e-mail уже зарегистрирован. Войдите в систему с данными e-mail или зарегистрируйтесь с другим e-mail',
   },
   forbidden: {
     message: 'Вы не можете удалять карточки других пользователей',
