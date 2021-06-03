@@ -2,7 +2,7 @@ const {
   NODE_ENV,
   JWT_SECRET,
   MONGO_URL,
-  PORT = 3000,
+  PORT = 5000,
 } = process.env;
 
 const mongooseParams = {
