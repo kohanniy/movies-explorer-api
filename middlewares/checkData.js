@@ -4,8 +4,8 @@ const { regexToCheckURL } = require('../utils/constants');
 const checkNewUser = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email()
-      .message('Введите валидный email-адрес')
       .messages({
+        'string.email': 'Введите валидный email-адрес',
         'any.required': 'Это поле должно быть заполнено',
       }),
     password: Joi.string().required().min(8)
@@ -25,8 +25,8 @@ const checkNewUser = celebrate({
 const checkLogin = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email()
-      .message('Введите валидный email-адрес')
       .messages({
+        'string.email': 'Введите валидный email-адрес',
         'any.required': 'Это поле должно быть заполнено',
       }),
     password: Joi.string().required().min(8)
@@ -40,8 +40,8 @@ const checkLogin = celebrate({
 const checkUpdateUser = celebrate({
   body: Joi.object().keys({
     email: Joi.string().required().email()
-      .message('Введите валидный email-адрес')
       .messages({
+        'string.email': 'Введите валидный email-адрес',
         'any.required': 'Это поле должно быть заполнено',
       }),
     name: Joi.string().min(2).max(30).required()
