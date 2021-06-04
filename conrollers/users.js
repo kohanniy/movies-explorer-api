@@ -5,7 +5,8 @@ const User = require('../models/user');
 const NotFoundError = require('../errors/NotFound');
 const BadRequestError = require('../errors/BadRequest');
 const ConflictError = require('../errors/ConflictError');
-const { requestErrors } = require('../utils/errorMessages');
+const AuthError = require('../errors/Auth');
+const { requestErrors, unauthorizedMsg } = require('../utils/errorMessages');
 const { JWT_SECRET } = require('../utils/config');
 
 const { errName, mongoErrorCode, message } = requestErrors.conflict;
@@ -39,6 +40,9 @@ const login = (req, res, next) => {
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
+      if (!user) {
+        throw new NotFoundError(requestErrors.notFound.user);
+      }
       const token = jwt.sign(
         { _id: user._id },
         JWT_SECRET,
@@ -46,7 +50,12 @@ const login = (req, res, next) => {
       );
       res.send({ token });
     })
-    .catch(next);
+    .catch((err) => {
+      if (err.statusCode === 401) {
+        const error = new AuthError(unauthorizedMsg.login);
+        next(error);
+      }
+    });
 };
 
 const getMe = (req, res, next) => {
