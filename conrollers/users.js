@@ -55,6 +55,7 @@ const login = (req, res, next) => {
         const error = new AuthError(unauthorizedMsg.login);
         next(error);
       }
+      next(err);
     });
 };
 
