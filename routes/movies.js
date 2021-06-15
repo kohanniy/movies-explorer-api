@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { getMovies, createMovie, deleteMovie } = require('../conrollers/movies');
+const { getMovies, createMovie, deleteMovie } = require('../controllers/movies');
 const { checNewMovie, checkMovieId } = require('../middlewares/checkData');
 
 router.get('/', getMovies);
