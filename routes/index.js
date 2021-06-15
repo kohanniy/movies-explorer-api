@@ -3,7 +3,7 @@ const moviesRouter = require('./movies');
 const usersRouter = require('./users');
 const NotFoundError = require('../errors/NotFound');
 const { requestErrors } = require('../utils/errorMessages');
-const { createUser, login } = require('../conrollers/users');
+const { createUser, login } = require('../controllers/users');
 const { checkNewUser, checkLogin } = require('../middlewares/checkData');
 const auth = require('../middlewares/auth');
 
