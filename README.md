@@ -2,8 +2,7 @@
 
 Это API отвечает за регистрацию, авторизацию, редактирование личных данных и сохранение (и удаление) в личном кабинете фильмов, пришедших с MoviesExplorer (API для поиска фильмов по ключевым словам).
 
-* Домен API - [https://api.mov-exp.kohanniy.nomoredomains.club](https://api.mov-exp.kohanniy.nomoredomains.club)
-* IP-адрес бэкенда - [178.154.225.119](https://178.154.225.119)
+* Домен API - [https://peaceful-forest-55370.herokuapp.com/](https://peaceful-forest-55370.herokuapp.com/)
 
 ## Используемые технологии
 
